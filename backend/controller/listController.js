@@ -19,6 +19,7 @@ exports.addingtask = async (req, res) => {
 exports.fetchingtask = async (req, res) => {
     try {
         const response = await listService.fetchedtask();
+        // console.log('response: ', response);
         if (!response)
             throw new CustomError("No data exist", 400)
         return res.status(201).json(response)
@@ -32,9 +33,7 @@ exports.fetchingtask = async (req, res) => {
 
 exports.updatingtask = async (req, res) => {
     try {
-    
         const id = req.params.id;
-        console.log('params: ', id);
         const data = req.body;
         const response = await listService.updatedtask({id, data})
         console.log('response: ', response);

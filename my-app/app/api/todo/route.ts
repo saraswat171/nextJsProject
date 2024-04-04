@@ -1,4 +1,4 @@
-"use server"
+
 import axios from 'axios'
 import { NextRequest, NextResponse } from 'next/server';
 export async function POST(req: NextRequest) {
@@ -17,11 +17,13 @@ export async function POST(req: NextRequest) {
 
 export async function GET(req: NextRequest) {
     try {
-        const task = await req.json();
-     console.log('task: ');
-        const response = await axios.get  ('http://localhost:8080/fetchtask' );
+        
+    
+        const response = await fetch ('http://localhost:8080/fetchtask' );
+        const data = await response.json();
+      //  console.log('data: ', data);
       
-    return NextResponse.json(response.data);
+    return NextResponse.json(data);
 
     } catch (error) {
         console.error('Error:', error);
